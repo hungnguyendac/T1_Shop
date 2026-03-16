@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Unbounded ,Geist, Geist_Mono } from "next/font/google";
+import { Unbounded, Inter } from "next/font/google";
 import "./globals.css";
 
 import Header from "@/components/layout/Header";
@@ -7,17 +7,13 @@ import Header from "@/components/layout/Header";
 const unbounded = Unbounded({
   subsets: ["latin"],
   weight: ["300", "400", "600", "700"],
-  variable: "--font-main",
+  variable: "--font-unbounded",
 });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["300", "400", "600", "700"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -32,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${unbounded.variable} ${unbounded.className}`}>
+      <body className={`${unbounded.variable} ${inter.variable}`}>
         <Header />
         {children}
       </body>

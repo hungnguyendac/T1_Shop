@@ -1,8 +1,8 @@
 :root {
   --background: #ffffff;
   --foreground: #000;
-
   --text-primary: #000
+  
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,7 +22,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-main), sans-serif;
+  font-family: var(--font-unbounded), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -54,7 +54,7 @@ a {
   padding: 0 16px;
 }
 
-.icon {
+/* .icon {
   display: inline-block;
   background-image: url("/public/css_sprites.png");
   background-repeat: no-repeat;
@@ -82,4 +82,4 @@ a {
   width: 24px;
   height: 22px;
   background: url("/public/css_sprites.png") -10px -10px;
-}
+} */

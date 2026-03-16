@@ -1,8 +1,17 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Header.module.css";
+import { useState } from "react";
 
 const Header = () => {
+  const [open, setOpen] = useState([false, false, false]);
+  const toggleMenu = (index) => {
+    const newOpen = [false, false, false];
+    newOpen[index] = !open[index]; 
+    setOpen(newOpen);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.hdBanner}>
@@ -41,118 +50,151 @@ const Header = () => {
               ></path>
             </svg>
           </div>
-          <nav className={styles.menu}>
-            <ul className={styles.menuList}>
-              <li className={styles.menuItem}>
-                <Link className={styles.itemLink} href="#">
-                  NEW
-                </Link>
-              </li>
-              <li className={styles.menuItem}>
-                <Link className={styles.itemLink} href="#">
-                  BEST
-                </Link>
-              </li>
-              <li className={styles.menuItem}>
-                <Link className={styles.itemLink} href="#">
-                  SHOP
-                </Link>
-                <ul className={styles.subMenu}>
-                  <li className={styles.subMenuLink}>
-                    <Link className={styles.subLink} href="#">
-                      ALL
-                    </Link>
-                  </li>
-                  <li className={styles.subMenuLink}>
-                    <Link className={styles.subLink} href="#">
-                      TEAM KIT
-                    </Link>
-                  </li>
-                  <li className={styles.subMenuLink}>
-                    <Link className={styles.subLink} href="#">
-                      COLLECTION
-                    </Link>
-                  </li>
-                  <li className={styles.subMenuLink}>
-                    <Link className={styles.subLink} href="#">
-                      COLLABORATION
-                    </Link>
-                  </li>
-                  <li className={styles.subMenuLink}>
-                    <Link className={styles.subLink} href="#">
-                      SALE
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li className={styles.menuItem}>
-                <Link className={styles.itemLink} href="#">
-                  LEGACY
-                </Link>
-                <ul className={styles.subMenu}>
-                  <li className={styles.subMenuLink}>
-                    <Link className={styles.subLink} href="#">
-                      T1 2025 WORLDS COLLECTION
-                    </Link>
-                  </li>
-                  <li className={styles.subMenuLink}>
-                    <Link className={styles.subLink} href="#">
-                      T1 2024 WORLDS COLLECTION
-                    </Link>
-                  </li>
-                  <li className={styles.subMenuLink}>
-                    <Link className={styles.subLink} href="#">
-                      T1 2023 WORLDS COLLECTION
-                    </Link>
-                  </li>
-                  <li className={styles.subMenuLink}>
-                    <Link className={styles.subLink} href="#">
-                      APPAREL
-                    </Link>
-                  </li>
-                  <li className={styles.subMenuLink}>
-                    <Link className={styles.subLink} href="#">
-                      GIFTS & ACCESSORIES
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li className={styles.menuItem}>
-                <Link className={styles.itemLink} href="#">
-                  COMMUNITY
-                </Link>
-                <ul className={styles.subMenu}>
-                  <li className={styles.subMenuLink}>
-                    <Link className={styles.subLink} href="#">
-                      FAQ
-                    </Link>
-                  </li>
-                  <li className={styles.subMenuLink}>
-                    <Link className={styles.subLink} href="#">
-                      NOTICE
-                    </Link>
-                  </li>
-                  <li className={styles.subMenuLink}>
-                    <Link className={styles.subLink} href="#">
-                      EVENT
-                    </Link>
-                  </li>
-                  <li className={styles.subMenuLink}>
-                    <Link className={styles.subLink} href="#">
-                      REVIEW
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li className={styles.menuItem}>
-                <Link className={styles.itemLink} href="#">
-                  Q&A
-                </Link>
-              </li>
-            </ul>
+          <nav className={styles.mainNav}>
+            <div className={styles.memberShip}>
+              <p className={styles.memberShipText}>GLOBAL/USD</p>
+              <Link className={styles.memberLink} href="#">
+                Login
+                <span className={styles.memberArrow}></span>
+              </Link>
+            </div>
+            <div className={styles.menu}>
+              <ul className={styles.menuList}>
+                <li className={styles.menuItem}>
+                  <Link className={styles.itemLink} href="#">
+                    NEW
+                  </Link>
+                </li>
+                <li className={styles.menuItem}>
+                  <Link className={styles.itemLink} href="#">
+                    BEST
+                  </Link>
+                </li>
+                <li
+                  className={`${styles.menuItem} ${open[0] ? styles.active : ""}`}
+                >
+                  <Link className={styles.itemLink} href="#">
+                    SHOP
+                  </Link>
+                  <span
+                    className={styles.arrowMenu}
+                    onClick={() => toggleMenu(0)}
+                  ></span>
+                  <ul className={styles.subMenu}>
+                    <li className={styles.subMenuLink}>
+                      <Link className={styles.subLink} href="#">
+                        ALL
+                      </Link>
+                    </li>
+                    <li className={styles.subMenuLink}>
+                      <Link className={styles.subLink} href="#">
+                        TEAM KIT
+                      </Link>
+                    </li>
+                    <li className={styles.subMenuLink}>
+                      <Link className={styles.subLink} href="#">
+                        COLLECTION
+                      </Link>
+                    </li>
+                    <li className={styles.subMenuLink}>
+                      <Link className={styles.subLink} href="#">
+                        COLLABORATION
+                      </Link>
+                    </li>
+                    <li className={styles.subMenuLink}>
+                      <Link className={styles.subLink} href="#">
+                        SALE
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+                <li
+                  className={`${styles.menuItem} ${open[1] ? styles.active : ""}`}
+                >
+                  <Link className={styles.itemLink} href="#">
+                    LEGACY
+                  </Link>
+                  <span
+                    className={styles.arrowMenu}
+                    onClick={() => toggleMenu(1)}
+                  ></span>
+                  <ul className={styles.subMenu}>
+                    <li className={styles.subMenuLink}>
+                      <Link className={styles.subLink} href="#">
+                        T1 2025 WORLDS COLLECTION
+                      </Link>
+                    </li>
+                    <li className={styles.subMenuLink}>
+                      <Link className={styles.subLink} href="#">
+                        T1 2024 WORLDS COLLECTION
+                      </Link>
+                    </li>
+                    <li className={styles.subMenuLink}>
+                      <Link className={styles.subLink} href="#">
+                        T1 2023 WORLDS COLLECTION
+                      </Link>
+                    </li>
+                    <li className={styles.subMenuLink}>
+                      <Link className={styles.subLink} href="#">
+                        APPAREL
+                      </Link>
+                    </li>
+                    <li className={styles.subMenuLink}>
+                      <Link className={styles.subLink} href="#">
+                        GIFTS & ACCESSORIES
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+                <li
+                  className={`${styles.menuItem} ${open[2] ? styles.active : ""}`}
+                >
+                  <Link className={styles.itemLink} href="#">
+                    COMMUNITY
+                  </Link>
+                  <span
+                    className={styles.arrowMenu}
+                    onClick={() => toggleMenu(2)}
+                  ></span>
+                  <ul className={styles.subMenu}>
+                    <li className={styles.subMenuLink}>
+                      <Link className={styles.subLink} href="#">
+                        FAQ
+                      </Link>
+                    </li>
+                    <li className={styles.subMenuLink}>
+                      <Link className={styles.subLink} href="#">
+                        NOTICE
+                      </Link>
+                    </li>
+                    <li className={styles.subMenuLink}>
+                      <Link className={styles.subLink} href="#">
+                        EVENT
+                      </Link>
+                    </li>
+                    <li className={styles.subMenuLink}>
+                      <Link className={styles.subLink} href="#">
+                        REVIEW
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+                <li className={styles.menuItem}>
+                  <Link className={styles.itemLink} href="#">
+                    Q&A
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </nav>
           <div className={styles.logo}>
-            <Image src="/logo.svg" alt="Logo" width={77} height={31} className={styles.logoImage}/>
+            <Image
+              src="/logo.svg"
+              alt="Logo"
+              width={77}
+              height={31}
+              className={styles.logoImage}
+            />
           </div>
           <div className={styles.hdRight}>
             <div className={styles.search}>
@@ -196,7 +238,7 @@ const Header = () => {
               ></path>
             </svg>
             <svg
-              viewBox="0 0 24 24"
+              viewBox="0 0 22 23"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
@@ -208,18 +250,16 @@ const Header = () => {
             </svg>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
+              width="21"
+              height="20"
+              viewBox="0 0 21 21"
               fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
               className={styles.iconBag}
             >
-              <path d="M2.048 18.566A2 2 0 0 0 4 21h16a2 2 0 0 0 1.952-2.434l-2-9A2 2 0 0 0 18 8H6a2 2 0 0 0-1.952 1.566z" />
-              <path d="M8 11V6a4 4 0 0 1 8 0v5" />
+              <path
+                d="M19.3485 3.75001H14.9147C14.8766 1.675 12.9074 0 10.4936 0C8.07988 0 6.12343 1.675 6.07261 3.75001H1.63884L0 20H21L19.3612 3.75001H19.3485ZM10.4936 1.87501C11.853 1.87501 12.9582 2.71251 13.0091 3.75001H7.99095C8.04176 2.71251 9.14697 1.87501 10.5063 1.87501H10.4936ZM2.09618 18.1251L3.35391 5.62502H17.6207L18.8785 18.1251H2.08349H2.09618Z"
+                fill="currentColor"
+              />
             </svg>
             <div className={styles.multiShop}>
               <span className={styles.globalCurrent}>
